@@ -42,7 +42,7 @@
             <label for="currency_select_to_euros">Convert From:</label>
             <select id="currency_select_to_euros" v-model="endCurrency">
                 <option disabled value="">Select Currency</option>
-                <option v-for="(value, name) in rates" :value="value"> {{ name }}: {{ value }}</option>
+                <option v-for="(value, name) in rates" :value="value"> {{ name }}</option>
             </select>
 
             <input type="submit" value="Convert"></button>

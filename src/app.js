@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
             amountToEuros: 0,
             convertedFromEuros: 0,
             convertedToEuros: 0,
-            currencyHelper: ""
         },
 
         mounted(){
