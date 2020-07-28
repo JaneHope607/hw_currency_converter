@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         computed: {
-
+            calculatedFromEuro: function() {
+                return this.convertFromEuro().toFixed(2);
+            }
         },
 
         mounted(){
@@ -26,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 
 
             convertFromEuro: function() {
-                return this.amount * this.rates;
+                return this.amount * this.selectedCurrency;
             }
         }
 
