@@ -7,28 +7,42 @@
 </head>
 <body>
 
-    <h1>Converter From Euros</h1>
-
     <div id="app">
 
-        <form v-on:submit.prevent="calculatedFromEuro">
-            <label for="amount">Enter Amount in Euros:</label>
-            <input id="amount" type="number" v-model.number="amount" required/>
+        <h1>Converter From Euros</h1>
 
-            <label for="currency_select">Convert To:</label>
-            <select id="currency_select" v-model="selectedCurrency">
+        <form>
+            <label for="amount-euros">Enter Amount (euros):</label>
+            <input id="amount-euros" type="number" v-model.number="amountFromEuros" required/>
+
+            <label for="currency_select_from_euros">Convert To:</label>
+            <select id="currency_select_from_euros" v-model="selectedCurrency">
                 <option disabled value="">Select Currency</option>
                 <option v-for="(value, name) in rates" :value="value"> {{ name }}: {{ value }}</option>
             </select>
             
-            <input type="submit" value="Convert" class="button-submit" />
-        </form>
+            <button v-on:click.prevent="calculatedFromEuro">Convert</button>
+        
 
         <h3>Value: {{ calculatedFromEuro }}</h3>
 
+
         <h1>Converter To Euros</h1>
 
-        
+        <form>
+            <label for="amount-foreign">Enter Amount:</label>
+            <input id="amount-foreign" type="number" v-model.number="amountToEuros" required/>
+
+            <label for="currency_select_to_euros">Convert From:</label>
+            <select id="currency_select_to_euros" v-model="selectedCurrency">
+                <option disabled value="">Select Currency</option>
+                <option v-for="(value, name) in rates" :value="value"> {{ name }}: {{ value }}</option>
+            </select>
+
+            <button v-on:click.prevent="calculatedToEuro">Convert</button>
+        </form>
+
+        <h3>Value: {{ calculatedToEuro }}</h3>
 
     </div>
 

@@ -5,10 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
         el: "#app",
         data: {
             rates: {},
-            amount: 0,
+            amountFromEuros: 0,
+            amountToEuros: 0,
             selectedCurrency: null
         },
 
+        mounted(){
+            this.getRates()
+        },
 
         computed: {
             calculatedFromEuro: function() {
@@ -20,10 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         },
 
-        mounted(){
-            this.getRates()
-        },
-
         methods: {
             getRates: function() {
                 fetch("https://api.exchangeratesapi.io/latest")
@@ -32,11 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 
 
             convertFromEuro: function() {
-                return this.amount * this.selectedCurrency;
+                return this.amountFromEuros * this.selectedCurrency;
             },
 
             convertToEuro: function() {
-                return this.amount / this.selectedCurrency;
+                return this.amountToEuros / this.selectedCurrency;
             }
         }
 
