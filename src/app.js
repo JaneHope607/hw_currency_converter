@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
         computed: {
             calculatedFromEuro: function() {
                 return this.convertFromEuro().toFixed(2);
+            },
+
+            calculatedToEuro: function() {
+                return this.convertToEuro().toFixed(2);
             }
         },
 
@@ -29,6 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             convertFromEuro: function() {
                 return this.amount * this.selectedCurrency;
+            },
+
+            convertToEuro: function() {
+                return this.amount / this.selectedCurrency;
             }
         }
 
