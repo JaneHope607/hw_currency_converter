@@ -6,43 +6,50 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-
+    <h1>EXCHANGE RATES</h1>  
     <div id="app">
 
-        <h1>Converter From Euros</h1>
+          <ul id="currency-list">
+              <li v-for="(value, name) in rates">
+                  Currency: {{ name }} Rate: {{ value.toFixed(2) }}
+              </li>
+          </ul>
 
-        <form>
+        <h1>Convert From Euros</h1>
+
+        <form class="form" v-on:submit.prevent="convertFromEuro">
             <label for="amount-euros">Enter Amount (euros):</label>
             <input id="amount-euros" type="number" v-model.number="amountFromEuros" required/>
 
             <label for="currency_select_from_euros">Convert To:</label>
-            <select id="currency_select_from_euros" v-model="selectedCurrency">
+            <select id="currency_select_from_euros" v-model="baseCurrency">
                 <option disabled value="">Select Currency</option>
-                <option v-for="(value, name) in rates" :value="value"> {{ name }}: {{ value }}</option>
+                <option v-for="(value, name) in rates" :value="value"> {{ name }}</option>
             </select>
             
-            <button v-on:click.prevent="calculatedFromEuro">Convert</button>
-        
+            <input type="submit" value="Convert"></button>
 
-        <h3>Value: {{ calculatedFromEuro }}</h3>
+        <h3>Value: {{ convertedFromEuros }}</h3>
 
+        </form>
 
-        <h1>Converter To Euros</h1>
+        <h1>Convert Into Euros</h1>
 
-        <form>
+        <form class="form" v-on:submit.prevent="convertToEuro">
             <label for="amount-foreign">Enter Amount:</label>
             <input id="amount-foreign" type="number" v-model.number="amountToEuros" required/>
 
             <label for="currency_select_to_euros">Convert From:</label>
-            <select id="currency_select_to_euros" v-model="selectedCurrency">
+            <select id="currency_select_to_euros" v-model="endCurrency">
                 <option disabled value="">Select Currency</option>
                 <option v-for="(value, name) in rates" :value="value"> {{ name }}: {{ value }}</option>
             </select>
 
-            <button v-on:click.prevent="calculatedToEuro">Convert</button>
-        </form>
+            <input type="submit" value="Convert"></button>
 
-        <h3>Value: {{ calculatedToEuro }}</h3>
+        <h3>Value: {{ convertedToEuros }}</h3>
+
+        </form>
 
     </div>
 

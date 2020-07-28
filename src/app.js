@@ -5,9 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
         el: "#app",
         data: {
             rates: {},
+            baseCurrency: null,
+            endCurrency: null,
             amountFromEuros: 0,
             amountToEuros: 0,
-            selectedCurrency: null
+            convertedFromEuros: 0,
+            convertedToEuros: 0,
+            currencyHelper: ""
         },
 
         mounted(){
@@ -15,13 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
         },
 
         computed: {
-            calculatedFromEuro: function() {
-                return this.convertFromEuro().toFixed(2);
-            },
+            // calculatedFromEuro: function() {
+            //     return this.convertFromEuro().toFixed(2);
+            // },
 
-            calculatedToEuro: function() {
-                return this.convertToEuro().toFixed(2);
-            }
+            // calculatedToEuro: function() {
+            //     return this.convertToEuro().toFixed(2);
+            // }
         },
 
         methods: {
@@ -32,11 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 
 
             convertFromEuro: function() {
-                return this.amountFromEuros * this.selectedCurrency;
+                const calculatedFromEuro = this.amountFromEuros * this.baseCurrency
+                this.convertedFromEuros = calculatedFromEuro.toFixed(2);
             },
 
             convertToEuro: function() {
-                return this.amountToEuros / this.selectedCurrency;
+                const calculatedToEuro = this.amountToEuros / this.endCurrency
+                this.convertedToEuros = calculatedToEuro.toFixed(2);
             }
         }
 
