@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
         el: "#app",
         data: {
             rates: {},
-            amount: 0
+            amount: 0,
+            selectedCurrency: null
         },
 
 
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(rates => this.rates = rates.rates)
             }, 
 
-            convertFromEuros: function() {
+            convertFromEuro: function() {
                 return this.amount * this.rates;
             }
         }

@@ -11,11 +11,17 @@
 
     <div id="app">
 
-        <form>
+        <form v-on:submit.prevent="convertFromEuro">
             <label for="amount">Enter Amount:</label>
             <input id="amount" type="number" v-model.number="amount" required/>
 
-            <label for="currency">Convert To:</label>
+            <label for="currency_select">Convert To:</label>
+            <select id="currency_select" v-model="selectedCurrency">
+                <option disabled value="">Select Currency</option>
+                <option v-for="(value, name) in rates"> {{ name }}: {{ value }}</option>
+            </select>
+
+        <input type="submit" value="Convert" class="button-submit" />
 
         </form>
 
