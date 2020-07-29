@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Vue Countries</title>
+    <title>Exchange Rates</title>
     <script src="./js/bundle.js"></script>
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -17,7 +17,7 @@
 
         <h1>Convert From Euros</h1>
 
-        <form class="form" v-on:submit.prevent="convertFromEuro">
+        <form class="form" v-on:submit.prevent="calculatedFromEuro">
             <label for="amount-euros">Enter Amount (euros):</label>
             <input id="amount-euros" type="number" v-model.number="amountFromEuros" required/>
 
@@ -29,13 +29,13 @@
             
             <input type="submit" value="Convert"></button>
 
-        <h3>Value: {{ convertedFromEuros }}</h3>
+        <h3>Value: {{ calculatedFromEuro }}</h3>
 
         </form>
 
         <h1>Convert Into Euros</h1>
 
-        <form class="form" v-on:submit.prevent="convertToEuro">
+        <form class="form" v-on:submit.prevent="calculatedToEuro">
             <label for="amount-foreign">Enter Amount:</label>
             <input id="amount-foreign" type="number" v-model.number="amountToEuros" required/>
 
@@ -47,7 +47,7 @@
 
             <input type="submit" value="Convert"></button>
 
-        <h3>Value: {{ convertedToEuros }}</h3>
+        <h3>Value: {{ calculatedToEuro }}</h3>
 
         </form>
 

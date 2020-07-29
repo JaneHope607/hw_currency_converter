@@ -18,13 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
         },
 
         computed: {
-            // calculatedFromEuro: function() {
-            //     return this.convertFromEuro().toFixed(2);
-            // },
 
-            // calculatedToEuro: function() {
-            //     return this.convertToEuro().toFixed(2);
-            // }
+            // avoid changing ANYTHING IN THE DATA OBJECT!!
+            // DON'T EVER RETURN AN EQUAL STATEMENT 
+
+            calculatedFromEuro: function() {
+                const convertedFromEuros = this.amountFromEuros * this.baseCurrency;
+                return convertedFromEuros.toFixed(2);
+            },
+
+            calculatedToEuro: function() {
+                const convertedToEuros = this.amountToEuros / this.endCurrency;
+                return convertedToEuros.toFixed(2);
+            }
         },
 
         methods: {
@@ -33,16 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.json())
                 .then(rates => this.rates = rates.rates)
             }, 
-
-            convertFromEuro: function() {
-                const calculatedFromEuro = this.amountFromEuros * this.baseCurrency
-                this.convertedFromEuros = calculatedFromEuro.toFixed(2);
-            },
-
-            convertToEuro: function() {
-                const calculatedToEuro = this.amountToEuros / this.endCurrency
-                this.convertedToEuros = calculatedToEuro.toFixed(2);
-            }
         }
 
     })
